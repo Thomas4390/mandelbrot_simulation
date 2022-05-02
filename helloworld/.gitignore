@@ -1,6 +1,6 @@
 build
-.DS_STORE
-.vscode/
+.DS_Store
+../.vscode
 *exe
 tempCodeRunnerFile
 helloworld.DSYM
