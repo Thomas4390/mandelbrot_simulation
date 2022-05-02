@@ -1,0 +1,6 @@
+build
+.DS_STORE
+*exe
+tempCodeRunnerFile
+helloworld.DSYM
+helloworld
