@@ -12,17 +12,17 @@ import shutil
 st.title("Mandelbrot Simulation")
 
 st.sidebar.title("Settings")
-n = st.sidebar.slider("Number of iterations", min_value=1, max_value=60, value=16)
+n = st.sidebar.slider("Number of iterations", min_value=1, max_value=60, value=30)
 zoom_factor = st.sidebar.slider("Zoom factor", min_value=1, max_value=10, value=2)
 res = st.sidebar.slider("Resolution of image", min_value=50, max_value=500, value=300)
-x = st.sidebar.number_input("Choose a x coordinate to zoom in:", value=-0.23, step=0.01)
-y = st.sidebar.number_input("Choose a y coordinate to zoom in:", value=0.82, step=0.01)
+x = st.sidebar.number_input("Choose a x coordinate to zoom in:", value=-1.18618990, step=1e-6, format="%.8f")
+y = st.sidebar.number_input("Choose a y coordinate to zoom in:", value=-0.17553800, step=1e-6, format="%.8f")
 max_iter = st.sidebar.slider("Number of max iteration before divergence", min_value=20, max_value=50, value=20)
-cmap = st.sidebar.selectbox("Choose a color map", ["gnuplot2", "magma", "inferno", "viridis", "copper", "plasma", "magenta"], index=5)
+cmap = st.sidebar.selectbox("Choose a color map", ["gnuplot2", "magma", "inferno", "viridis", "copper", "plasma", "twilight"], index=0)
+gif_duration = st.sidebar.slider("Duration of gif", min_value=0.1, max_value=1.0, value=0.45)
 
 
-
-def diverge(c:complex, max_iter=max_iter)->int:
+def diverge(c:complex, max_iter: int=max_iter)->int:
     c = complex(*c)
     z = 0
 
@@ -111,7 +111,7 @@ def make_gif(filenames_list):
     images = []
     for filename in filenames_list:
         images.append(imageio.v2.imread(f"figures/{filename}"))
-    imageio.mimsave(f"zoom.gif", images, duration=0.5)
+    imageio.mimsave(f"zoom.gif", images, duration=gif_duration)
 
 def read_gif():
         file_ = open("zoom.gif", "rb")
