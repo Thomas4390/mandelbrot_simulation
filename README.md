@@ -1,3 +1,3 @@
 # mandelbrot_simulation
 
-Simulation of the mandelbrot set in a streamlit app. 
+Simulation of the mandelbrot set with zoom in a streamlit app. 
